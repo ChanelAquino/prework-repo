@@ -19,7 +19,11 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    // handles when user taps on main view
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true) // dismiss keyboard
+    }
+    
 }
 
