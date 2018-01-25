@@ -11,14 +11,32 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var billField: UITextField!
-    @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
+    @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var twoPersonLabel: UILabel!
+    @IBOutlet weak var threePersonLabel: UILabel!
+    @IBOutlet weak var fourPersonLabel: UILabel!
     
     
     override func viewDidLoad() {
+        // colors
+        let whiteBlue =
+            UIColor(red:0.71, green:0.82, blue:0.93, alpha:1.0)
+        let pastelBlue = UIColor(red:0.51, green:0.64, blue:0.80, alpha:1.0)
+        let steelBlue = UIColor(red:0.24, green:0.49, blue:0.69, alpha:1.0)
+        let electricBlue = UIColor(red:0.02, green:0.29, blue:0.57, alpha:1.0)
+        let orange = UIColor(red:0.95, green:0.45, blue:0.00, alpha:1.0)
+        
+        // set colors of components
+        billField.textColor = electricBlue
+        tipControl.tintColor = orange
+        totalLabel.textColor = electricBlue
+        twoPersonLabel.textColor = steelBlue
+        threePersonLabel.textColor = pastelBlue
+        fourPersonLabel.textColor = whiteBlue
+    
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,20 +47,36 @@ class ViewController: UIViewController {
     // handle when user taps anywhere on screen
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)   // dismiss keyboard
-    }
+    }   // end onTap
     
-    // calculate tip amount on bill text view changed
+    // handle when user changes contents of bill field
     @IBAction func calculateTip(_ sender: Any) {
         
-        let tipPercentages = [0.18, 0.20, 0.25] // array of tip %
-        let bill = Double(billField.text!) ?? 0 // constant variable for bill amount
+        let tipPercentages = [0.18, 0.20, 0.25] // array of tip % in segmented controller
+        
+        let bill = Double(billField.text!) ?? 0 // value inside text field
         
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
+        
         let total = bill + tip
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        // user has not entered bill amount
+        if billField.text == "" {
+            tipLabel.text = ""
+            totalLabel.text = ""
+            twoPersonLabel.text = ""
+            threePersonLabel.text = ""
+            fourPersonLabel.text = ""
+        } else {
+            tipLabel.text = String(format: "%.2f", tip)
+            totalLabel.text = String(format: "%.2f", total)
+            twoPersonLabel.text = String(format: "%.2f", total / 2)
+            threePersonLabel.text = String(format: "%.2f", total / 3)
+            fourPersonLabel.text = String(format: "%.2f", total / 4)
+        }
         
-    }
+       
+        
+    } // end calculateTip
 }
 
