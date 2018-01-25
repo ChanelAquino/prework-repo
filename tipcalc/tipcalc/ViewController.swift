@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         } else {
             
             // user entered more than 2 digits
-            if billField.text!.count >= 2 {
+            if billField.text!.count > 2 {
                 
                 // remove current decimal point
                 billField.text! = billField.text!.replacingOccurrences(of: ".", with: "")
