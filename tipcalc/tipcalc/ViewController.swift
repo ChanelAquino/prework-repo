@@ -10,10 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var tipLabel: UILabel!
-    @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var billField: UITextField!
+    @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
+    @IBOutlet weak var totalLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -25,12 +25,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // handles when user taps on main view
-    @IBAction func onTap(_ sender: Any) {
-        view.endEditing(true) // dismiss keyboard
-    }
 
+    // handle when user taps anywhere on screen
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)   // dismiss keyboard
+    }
+    
     // calculate tip amount on bill text view changed
     @IBAction func calculateTip(_ sender: Any) {
         
