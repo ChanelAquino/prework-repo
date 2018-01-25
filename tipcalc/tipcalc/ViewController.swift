@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         // colors
         let whiteBlue =
             UIColor(red:0.71, green:0.82, blue:0.93, alpha:1.0)
@@ -35,9 +37,8 @@ class ViewController: UIViewController {
         twoPersonLabel.textColor = steelBlue
         threePersonLabel.textColor = pastelBlue
         fourPersonLabel.textColor = whiteBlue
-    
-        super.viewDidLoad()
-    }
+
+    }   // end viewDidLoad
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,12 +54,9 @@ class ViewController: UIViewController {
     @IBAction func calculateTip(_ sender: Any) {
         
         let tipPercentages = [0.18, 0.20, 0.25] // array of tip % in segmented controller
-        
         let bill = Double(billField.text!) ?? 0 // value inside text field
-        
-        let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
-        
-        let total = bill + tip
+        let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]    // calculate tip
+        let total = bill + tip  // calculate total
         
         // user has not entered bill amount
         if billField.text == "" {
@@ -68,15 +66,24 @@ class ViewController: UIViewController {
             threePersonLabel.text = ""
             fourPersonLabel.text = ""
         } else {
+            
+            // user entered more than 2 digits
+            if billField.text!.count >= 2 {
+                
+                // remove current decimal point
+                billField.text! = billField.text!.replacingOccurrences(of: ".", with: "")
+                
+                // auto-insert decimal point
+                billField.text!.insert(".", at: billField.text!.index(billField.text!.endIndex, offsetBy: -2))
+            }
+            
+            // set text for labels
             tipLabel.text = String(format: "%.2f", tip)
             totalLabel.text = String(format: "%.2f", total)
             twoPersonLabel.text = String(format: "%.2f", total / 2)
             threePersonLabel.text = String(format: "%.2f", total / 3)
             fourPersonLabel.text = String(format: "%.2f", total / 4)
         }
-        
-       
-        
     } // end calculateTip
 }
 
