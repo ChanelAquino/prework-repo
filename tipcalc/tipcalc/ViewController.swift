@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         view.endEditing(true)   // dismiss keyboard
     }   // end onTap
     
-    // handle when user changes contents of bill field
+    // handle when user changes contents of tbill field
     @IBAction func calculateTip(_ sender: Any) {
         
         let tipPercentages = [0.18, 0.20, 0.25] // array of tip % in segmented controller
