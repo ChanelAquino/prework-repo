@@ -27,13 +27,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='blob:https://imgur.com/925bfe5d-9819-4433-92ec-561bdd7c6c33' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/nklXjkL.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+An initial challenge I faced when building this app involved familiarizing myself with Xcode and learning how to navigate through the UI. Once that challenge was overcome, the next challenge was laying components out in a way that (I assumed) would have met design standards. Overall, this was a fun mini-project to kick off the semester.
 
 ## License
 
